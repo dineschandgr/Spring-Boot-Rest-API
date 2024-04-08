@@ -18,14 +18,7 @@ public class StudentService {
     @Autowired
     StudentRespository studentRespository;
     public List<Student> getAllStudents(){
-
-      /*  Student s1 = new Student("John", "R111", "12345", new Date(1985,04,04));
-        Student s2 = new Student("Rebecca", "R112", "12345", new Date(1975,04,04));
-        Student s3 = new Student("Alex", "R113", "12345", new Date(1965,04,04));
-        return List.of(s1,s2,s3);*/
-
         return studentRespository.findAll();
-
     }
 
     public Student getStudent(Long id){
