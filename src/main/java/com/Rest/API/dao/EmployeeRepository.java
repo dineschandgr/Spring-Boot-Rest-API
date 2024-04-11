@@ -14,7 +14,7 @@ public interface EmployeeRepository extends JpaRepository<Employee, Long> {
             value =
                     "select e.* "
                             + "from employee e inner join address a "
-                            + "on e.id = a.employee_id"
+                            + "on e.id = a.employee_id "
                             + "where e.age > :age",
             nativeQuery = true)
     List<Employee> findEmployeeWithAddress(@Param("age") int age);
