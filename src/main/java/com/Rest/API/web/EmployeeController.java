@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -32,6 +33,11 @@ public class EmployeeController {
     @GetMapping("{id}")
     public ResponseEntity<Employee> getAllEmployee(@PathVariable Long id){
         return ResponseEntity.ok(employeeService.getEmployee(id));
+    }
+
+    @GetMapping("address")
+    public List<Employee> findEmployeesWithAddress(@RequestParam int age){
+        return employeeService.findEmployeesWithAddress(age);
     }
 
     @PostMapping

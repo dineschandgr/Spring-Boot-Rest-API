@@ -24,6 +24,10 @@ public class EmployeeService {
          return maybeEmployee.orElse(null);
     }
 
+    public List<Employee> findEmployeesWithAddress(int age){
+        return EmployeeRespository.findEmployeeWithAddress(age);
+    }
+
     public Employee createEmployee(Employee Employee){
         return EmployeeRespository.save(Employee);
     }

@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -33,6 +34,26 @@ public class StudentController {
     @GetMapping("{id}")
     public ResponseEntity<Student> getAllStudent(@PathVariable Long id){
         return ResponseEntity.ok(studentService.getStudent(id));
+    }
+
+    @GetMapping(params = {"name", "age"})
+    public ResponseEntity<Student> getStudentByNameAndAge(@RequestParam(value = "name") String name, @RequestParam(value = "age") int age){
+        System.out.println("inside getStudentByNameAndAge name: "+name + " age: "+age);
+        return ResponseEntity.ok(studentService.getStudentByNameAndAge(name, age));
+    }
+
+    @GetMapping(params = {"name"})
+    public ResponseEntity<Student> getStudentByName(@RequestParam(value = "name") String name){
+        System.out.println("inside getStudentByName name: "+name);
+        Student student = studentService.getStudentByName(name);
+        System.out.println("inside getStudentByName student: "+student);
+        return ResponseEntity.ok(student);
+    }
+
+    @GetMapping(params = {"age"})
+    public ResponseEntity<Student> getStudentByAge(@RequestParam(value = "age") int age){
+        System.out.println("inside getStudentByAge name: "+age);
+        return ResponseEntity.ok(studentService.getStudentByAge(age));
     }
 
     @PostMapping

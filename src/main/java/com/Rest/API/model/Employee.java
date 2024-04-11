@@ -18,10 +18,7 @@ public class Employee {
     private String employeeName;
 
     @Column
-    private String age;
-
-    @OneToOne(mappedBy = "employee")
-    private Address address;
+    private int age;
 
     public String getEmployeeName() {
         return employeeName;
@@ -31,19 +28,11 @@ public class Employee {
         this.employeeName = employeeName;
     }
 
-    public String getAge() {
+    public int getAge() {
         return age;
     }
 
-    public void setAge(String age) {
+    public void setAge(int age) {
         this.age = age;
-    }
-
-    public Address getAddress() {
-        return address;
-    }
-
-    public void setAddress(Address address) {
-        this.address = address;
     }
 }

@@ -5,9 +5,20 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.util.Date;
 
+
+
+@Data
+@NoArgsConstructor
+//Data = @Getter, @Setter, @ToString, @EqualsAndHashCode and @RequiredArgsConstructor
 @Entity
 public class Student {
 
@@ -17,51 +28,15 @@ public class Student {
 
     String name;
 
+    Integer age;
+
     String regNo;
 
     String contact;
 
     Date dob;
 
-    public Student() {
-    }
 
-    public Student(String name, String regNo, String contact, Date dob) {
-        this.name = name;
-        this.regNo = regNo;
-        this.contact = contact;
-        this.dob = dob;
-    }
 
-    public String getName() {
-        return name;
-    }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getRegNo() {
-        return regNo;
-    }
-
-    public void setRegNo(String regNo) {
-        this.regNo = regNo;
-    }
-
-    public String getContact() {
-        return contact;
-    }
-
-    public void setContact(String contact) {
-        this.contact = contact;
-    }
-
-    public Date getDob() {
-        return dob;
-    }
-
-    public void setDob(Date dob) {
-        this.dob = dob;
-    }
 }

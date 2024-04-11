@@ -26,6 +26,20 @@ public class StudentService {
          return maybeStudent.orElse(null);
     }
 
+    public Student getStudentByNameAndAge(String name, int age){
+        Optional<Student> maybeStudent = studentRespository.findByNameIgnoreCaseAndAge(name, age);
+        return maybeStudent.orElse(new Student());
+    }
+
+    public Student getStudentByName(String name){
+        Optional<Student> maybeStudent = studentRespository.findByNameIgnoreCase(name);
+        return maybeStudent.orElse(new Student());
+    }
+
+    public Student getStudentByAge(int age){
+        return studentRespository.findByAge(age);
+    }
+
     public Student createStudent(Student student){
         Student student1 = studentRespository.save(student);
         return student1;
