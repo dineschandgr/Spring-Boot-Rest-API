@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -25,14 +26,14 @@ public class EmployeeController {
     EmployeeService employeeService;
 
     @GetMapping
-    public ResponseEntity<List<Employee>> getAllEmployees(){
+    public List<Employee> getAllEmployees(){
         List<Employee> EmployeeList =  employeeService.getAllEmployees();
-        return ResponseEntity.ok(EmployeeList);
+        return EmployeeList;
     }
 
     @GetMapping("{id}")
-    public ResponseEntity<Employee> getAllEmployee(@PathVariable Long id){
-        return ResponseEntity.ok(employeeService.getEmployee(id));
+    public Employee getAllEmployee(@PathVariable Long id){
+        return  employeeService.getEmployee(id);
     }
 
     @GetMapping("address")
@@ -41,14 +42,14 @@ public class EmployeeController {
     }
 
     @PostMapping
-    public Employee createEmployee(@RequestBody Employee Employee){
-       return employeeService.createEmployee(Employee);
+    public Employee createEmployee(@RequestBody Employee employee){
+        return employeeService.createEmployee(employee);
     }
 
 
     @PutMapping("{id}")
-    public Employee updateEmployee(@PathVariable Long id, @RequestBody Employee Employee){
-        return employeeService.updateEmployee(id, Employee);
+    public Employee updateEmployee(@PathVariable Long id, @RequestBody Employee employee){
+        return employeeService.updateEmployee(id, employee);
     }
 
     @DeleteMapping("{id}")

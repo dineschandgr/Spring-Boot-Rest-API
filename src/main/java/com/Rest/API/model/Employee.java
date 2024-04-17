@@ -11,7 +11,7 @@ import jakarta.persistence.OneToOne;
 public class Employee {
 
     @Id
-    @GeneratedValue(strategy= GenerationType.SEQUENCE)
+    @GeneratedValue(strategy= GenerationType.AUTO)
     private long id;
 
     @Column
@@ -19,6 +19,14 @@ public class Employee {
 
     @Column
     private int age;
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
 
     public String getEmployeeName() {
         return employeeName;

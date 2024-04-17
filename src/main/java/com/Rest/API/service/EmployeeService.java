@@ -32,12 +32,12 @@ public class EmployeeService {
         return EmployeeRespository.save(Employee);
     }
 
-    public Employee updateEmployee(Long id, Employee Employee){
+    public Employee updateEmployee(Long id, Employee employee){
 
         boolean EmployeeExist = EmployeeRespository.existsById(id);
 
         if(EmployeeExist){
-            return EmployeeRespository.save(Employee);
+            return EmployeeRespository.save(employee);
         }
 
        return null;
