@@ -3,6 +3,8 @@ package com.Rest.API.web;
 
 import com.Rest.API.model.Student;
 import com.Rest.API.service.StudentService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -13,7 +15,6 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -24,6 +25,9 @@ public class StudentController {
 
     @Autowired
     StudentService studentService;
+
+    private final Logger LOGGER =
+            LoggerFactory.getLogger(StudentController.class);
 
     @GetMapping
     public ResponseEntity<List<Student>> getAllStudents(){
@@ -37,9 +41,13 @@ public class StudentController {
     }
 
     @GetMapping(params = {"name", "age"})
-    public ResponseEntity<Student> getStudentByNameAndAge(@RequestParam(value = "name") String name, @RequestParam(value = "age") int age){
+    public Student getStudentByNameAndAge(@RequestParam(value = "name") String name, @RequestParam(value = "age") int age){
+
+        LOGGER.info("inside getStudentByNameAndAge name: {} age: {} ",name, age);
         System.out.println("inside getStudentByNameAndAge name: "+name + " age: "+age);
-        return ResponseEntity.ok(studentService.getStudentByNameAndAge(name, age));
+        Student student = studentService.getStudentByNameAndAge(name, age);
+        LOGGER.debug("student output {} ",student);
+        return student;
     }
 
     @GetMapping(params = {"name"})
