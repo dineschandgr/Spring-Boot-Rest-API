@@ -9,3 +9,6 @@ This repo is used to demonstrate REST API with 5 methods
 Connected to MySQL DB in localhost
 
 Spring Boot server runs in port 8090
+
+
+http://localhost:8090/swagger-ui.html
