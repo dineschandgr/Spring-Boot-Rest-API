@@ -5,7 +5,9 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.PrePersist;
+import jakarta.persistence.PreUpdate;
+import org.hibernate.annotations.ColumnTransformer;
 
 @Entity
 public class Employee {
@@ -14,7 +16,7 @@ public class Employee {
     @GeneratedValue(strategy= GenerationType.AUTO)
     private long id;
 
-    @Column
+    @Column(name="employeeName")
     private String employeeName;
 
     @Column
@@ -26,6 +28,12 @@ public class Employee {
 
     public void setId(long id) {
         this.id = id;
+    }
+
+    @PrePersist
+    @PreUpdate
+    public void toUpperCase() {
+        this.employeeName = employeeName.toUpperCase();
     }
 
     public String getEmployeeName() {

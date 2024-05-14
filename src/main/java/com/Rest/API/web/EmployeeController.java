@@ -25,17 +25,20 @@ public class EmployeeController {
     @Autowired
     EmployeeService employeeService;
 
+    //http://localhost:8090/employee
     @GetMapping
     public List<Employee> getAllEmployees(){
         List<Employee> EmployeeList =  employeeService.getAllEmployees();
         return EmployeeList;
     }
 
+    //http://localhost:8090/employee/id/1
     @GetMapping("{id}")
     public Employee getAllEmployee(@PathVariable Long id){
         return  employeeService.getEmployee(id);
     }
 
+    //http://localhost:8090/employee/address
     @GetMapping("address")
     public List<Employee> findEmployeesWithAddress(@RequestParam int age){
         return employeeService.findEmployeesWithAddress(age);
