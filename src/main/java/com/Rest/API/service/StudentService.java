@@ -47,12 +47,16 @@ public class StudentService {
 
     public Student updateStudent(Long id, Student student){
 
-        boolean studentExist = studentRespository.existsById(id);
+        Optional<Student> maybeOldStudent = studentRespository.findById(id);
 
-        if(studentExist){
-            return studentRespository.save(student);
+        if(maybeOldStudent.isPresent()){
+            Student oldStudent = maybeOldStudent.get();
+            oldStudent.setAge(student.getAge());
+            oldStudent.setName(student.getName());
+            oldStudent.setContact(student.getContact());
+            oldStudent.setDob(student.getDob());
+            return studentRespository.save(oldStudent);
         }
-
        return null;
 
     }
