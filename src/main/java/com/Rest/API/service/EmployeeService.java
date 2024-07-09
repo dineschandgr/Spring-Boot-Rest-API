@@ -15,6 +15,9 @@ public class EmployeeService {
     @Autowired
     EmployeeRepository EmployeeRespository;
 
+    @Autowired
+    AddressService addressService;
+
     public List<Employee> getAllEmployees(){
         return EmployeeRespository.findAll();
     }
