@@ -29,6 +29,10 @@ public class AddressService {
          return mayBeAddress.orElse(null);
     }
 
+     public Address createAddress(Address address){
+        return addressRepository.save(address);
+    }
+
     public Address createAddress(Address address, Long employeeId){
         Employee employee = employeeRepository.findById(employeeId).orElse(new Employee());
         address.setEmployee(employee);
