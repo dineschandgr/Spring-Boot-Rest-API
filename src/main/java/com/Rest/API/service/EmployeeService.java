@@ -28,7 +28,22 @@ public class EmployeeService {
         return EmployeeRespository.findEmployeeWithAddress(age);
     }
 
-    public Employee createEmployee(Employee Employee){
+    public Employee createEmployee(Employee employee){
+
+        Address address1 = Address.builder().streetName("aaaa").postalCode("sss").build();
+        address1 = addressService.createAddress(address1);
+
+        //use for 1 to 1 mapping
+
+        employee.setAddress(address1);
+
+        //use for 1 to many mapping
+     /*   Address address2 = Address.builder().streetName("aaaa").postalCode("sss").build();
+        address2 = addressService.createAddress(address2);
+        List<Address> addressList = List.of(address1,address2);
+        Employee.setAddressList(addressList);*/
+        return EmployeeRespository.save(employee);
+        
         return EmployeeRespository.save(Employee);
     }
 
