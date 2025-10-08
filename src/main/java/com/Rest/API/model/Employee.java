@@ -5,11 +5,19 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.PreUpdate;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.hibernate.annotations.ColumnTransformer;
 
 @Entity
+@Data
+@RequiredArgsConstructor
 public class Employee {
 
     @Id
@@ -21,6 +29,10 @@ public class Employee {
 
     @Column
     private int age;
+
+    @OneToOne
+    @JoinColumn(name = "address_id")
+    private Address address;
 
     public long getId() {
         return id;

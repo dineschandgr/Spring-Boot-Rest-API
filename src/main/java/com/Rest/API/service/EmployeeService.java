@@ -2,6 +2,7 @@ package com.Rest.API.service;
 
 
 import com.Rest.API.dao.EmployeeRepository;
+import com.Rest.API.model.Address;
 import com.Rest.API.model.Employee;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -47,7 +48,6 @@ public class EmployeeService {
         Employee.setAddressList(addressList);*/
         return EmployeeRespository.save(employee);
         
-        return EmployeeRespository.save(Employee);
     }
 
     public Employee updateEmployee(Long id, Employee employee){

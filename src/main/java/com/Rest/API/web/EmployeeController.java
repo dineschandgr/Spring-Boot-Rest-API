@@ -44,17 +44,19 @@ public class EmployeeController {
         return employeeService.findEmployeesWithAddress(age);
     }
 
+    //http://localhost:8090/employee
     @PostMapping
     public Employee createEmployee(@RequestBody Employee employee){
         return employeeService.createEmployee(employee);
     }
 
-
+    //http://localhost:8090/employee/2
     @PutMapping("{id}")
     public Employee updateEmployee(@PathVariable Long id, @RequestBody Employee employee){
         return employeeService.updateEmployee(id, employee);
     }
 
+    //http://localhost:8090/employee/2
     @DeleteMapping("{id}")
     public ResponseEntity<String> deleteEmployee(@PathVariable Long id){
         employeeService.deleteEmployee(id);
